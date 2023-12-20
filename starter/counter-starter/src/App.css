@@ -19,3 +19,13 @@
   font-size: 30px;
   font-weight: bold;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px);
+  max-width: 480px;
+  padding: 16px;
+  margin: 0px auto;
+  background-color: var(--main-container-color);
+}
