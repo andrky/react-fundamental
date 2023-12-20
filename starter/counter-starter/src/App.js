@@ -22,7 +22,13 @@ function App() {
 				<img className="nav-icon" src={shoppingIcon} alt="Shopping Icon" />
 				<h1 className="nav-title">Shopping List</h1>
 			</nav>
-      <section className='container'></section>
+      <section className='container'>
+        <form className='form'>
+          <input className='input' type='text' placeholder='List'>
+          </input>
+          <button className='add-button' type='submit'>Tambah</button>
+        </form>
+      </section>
 		</>
 	);
 }
