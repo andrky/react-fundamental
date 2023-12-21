@@ -1,10 +1,13 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 
 import shoppingIcon from './assets/shopping-icon.svg';
 
 import './App.css';
 
 function App() {
+  const [value, setValue] = useState('');
+
+  console.log(value);
 	// function handleClickPlus() {
 	//   setCount(count + 1);
 	// }
@@ -24,9 +27,12 @@ function App() {
 			</nav>
       <section className='container'>
         <form className='form'>
-          <input className='input' type='text' placeholder='List'>
+          <input 
+          className='input' onChange={(e) => {setValue(e.target.value)}} 
+          type='text' 
+          placeholder='List'>
           </input>
-          <button className='add-button' type='submit'>Tambah</button>
+          <button className='add-button' type='submit'>Add</button>
         </form>
       </section>
 		</>

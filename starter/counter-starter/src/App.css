@@ -52,9 +52,9 @@
   border: none;
   border-radius: 6px;
   color: var(--secondary-font-color);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
-  padding: 10px;
+  padding: 10px 16px;
   width: auto;
   background-color: var(--main-background-color);
   box-shadow: var(--main-box-shadow);
