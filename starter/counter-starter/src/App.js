@@ -10,11 +10,18 @@ import './App.css';
 function App() {
 	const [value, setValue] = useState('');
   const [todos, setTodos] = useState([
-    {title: 'Semangka', count: '1'},
-    {title: 'Pisang', count: '1'},
-    {title: 'Jambu', count: '1'},
+    {title: 'Semangka', count: 1},
+    {title: 'Pisang', count: 1},
+    {title: 'Jambu', count: 1},
   ]);
 
+  const handleAdditionCount = (index) => {
+    const newTodos = [...todos];
+
+    newTodos[index].count = newTodos[index].count + 1;
+
+    setTodos(newTodos);
+  }
 
 	// Cara Kesatu
 	// function handleClickPlus() {
@@ -88,7 +95,7 @@ function App() {
 									<button className="todo-action-button">
 										<img src={minusIcon} alt="Minus Icon" />
 									</button>
-									<button className="todo-action-button">
+									<button onClick={() => {handleAdditionCount(index)}} className="todo-action-button">
 										<img src={plusIcon} alt="Plus Icon" />
 									</button>
 								</div>
@@ -100,8 +107,10 @@ function App() {
           <div>Kosong</div>
         )}
 			</section>
-		</>
+    </>
+    
 	);
+  
 }
 
 export default App;
