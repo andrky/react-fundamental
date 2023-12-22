@@ -123,3 +123,32 @@
 .todo-divider {
 	border-bottom: 2px solid var(--main-border-color);
 }
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 0px;
+}
+
+.info-total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-font-color);
+  font-size: 13px;
+}
+
+.info-total > p {
+  font-weight: bold;
+}
+
+.delete-all-button {
+  background-color: unset;
+  border: none;
+  padding: unset;
+  color: var(--danger-font-color);
+  font-size: 13px;
+  font-weight: bold;
+}
