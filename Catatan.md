@@ -4,3 +4,4 @@
 *Untuk melakukan merge array menggunakan
 [...arr1, ...arr2] atau
 [...arr1, {key: value}]
+*return juga akan menghentikan suatu code

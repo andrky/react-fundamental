@@ -35,6 +35,12 @@ function App() {
 
 	const handleAddTodos = (e) => {
 		e.preventDefault();
+
+    if (!value) {
+      alert('No blank data!');
+      return
+    }
+
 		const addTodos = [
 			...todos,
 			{
@@ -44,6 +50,7 @@ function App() {
 		];
 
 		setTodos(addTodos);
+    setValue('');
 	};
 	// Cara Kesatu
 	// function handleClickPlus() {
@@ -98,6 +105,7 @@ function App() {
 						onChange={(e) => {
 							setValue(e.target.value);
 						}}
+            value={value}
 						type="text"
 						placeholder="List"
 					></input>
