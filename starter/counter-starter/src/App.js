@@ -10,13 +10,16 @@ import plusIcon from './assets/plus-icon.svg';
 import './App.css';
 
 function App() {
+	// State Input Value
 	const [value, setValue] = useState('');
+	// State Data Todos
 	const [todos, setTodos] = useState([
-		{ title: 'Semangka', count: 0 },
-		{ title: 'Pisang', count: 0 },
-		{ title: 'Jambu', count: 0 },
+		{ title: 'Semangka', count: 1 },
+		{ title: 'Pisang', count: 1 },
+		{ title: 'Jambu', count: 1 },
 	]);
 
+	// Function Menambahkan Count Todos Berdasarkan Parameter Index Yang Didapatkan Hasil Dari Array Map
 	const handleAdditionCount = (index) => {
 		const newTodos = [...todos];
 
@@ -25,32 +28,42 @@ function App() {
 		setTodos(newTodos);
 	};
 
+	// Function Mengurangi Count Todos Berdasarkan Parameter Index Yang Didapatkan Hasil Dari Array Map
 	const handleSubstractionCount = (index) => {
 		const newTodos = [...todos];
 
-		newTodos[index].count = newTodos[index].count - 1;
+    // Jika Count Data Todos > 1, Maka Bisa dilakukan Pengurangan Count
+		if (newTodos[index].count > 1) {
+			newTodos[index].count = newTodos[index].count - 1;
+		} else {
+      // Jika Data Count 1, Dan Mencoba Melakukan Pengurangan Maka Data Todos Akan Dihapus
+			newTodos.splice(index, 1);
+		}
 
 		setTodos(newTodos);
 	};
 
+  // Menambahkan Submit Todos
 	const handleAddTodos = (e) => {
 		e.preventDefault();
 
-    if (!value) {
-      alert('No blank data!');
-      return
-    }
+    // Jika Data Yang Diinput Kosong Maka Tidak Akan Bisa
+		if (!value) {
+			alert('No blank data!');
+			return;
+		}
 
+    // Melakukan Merge Array
 		const addTodos = [
 			...todos,
 			{
 				title: value,
-				count: 0,
+				count: 1,
 			},
 		];
 
 		setTodos(addTodos);
-    setValue('');
+		setValue('');
 	};
 	// Cara Kesatu
 	// function handleClickPlus() {
@@ -105,7 +118,7 @@ function App() {
 						onChange={(e) => {
 							setValue(e.target.value);
 						}}
-            value={value}
+						value={value}
 						type="text"
 						placeholder="List"
 					></input>
@@ -144,7 +157,7 @@ function App() {
 						})}
 					</div>
 				) : (
-					<div>Kosong</div>
+					<div className="kosong">Empty</div>
 				)}
 			</section>
 		</>
