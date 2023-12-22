@@ -1,6 +1,8 @@
+// Import library
 import { useState } from 'react';
 import classname from 'classnames';
 
+// Import Asset
 import shoppingIcon from './assets/shopping-icon.svg';
 import minusIcon from './assets/minus-icon.svg';
 import plusIcon from './assets/plus-icon.svg';
@@ -29,6 +31,19 @@ function App() {
 		newTodos[index].count = newTodos[index].count - 1;
 
 		setTodos(newTodos);
+	};
+
+	const handleAddTodos = (e) => {
+		e.preventDefault();
+		const addTodos = [
+			...todos,
+			{
+				title: value,
+				count: 0,
+			},
+		];
+
+		setTodos(addTodos);
 	};
 	// Cara Kesatu
 	// function handleClickPlus() {
@@ -77,7 +92,7 @@ function App() {
 				<h1 className="nav-title">Shopping List</h1>
 			</nav>
 			<section className="container">
-				<form className="form">
+				<form className="form" onSubmit={handleAddTodos}>
 					<input
 						className="input"
 						onChange={(e) => {
