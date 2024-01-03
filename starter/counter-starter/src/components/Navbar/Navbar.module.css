@@ -1,0 +1,21 @@
+.nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-color: var(--main-background-color);
+	padding: 0px 16px;
+	height: 80px;
+}
+
+.navIcon {
+	height: 40px;
+	width: 40px;
+	padding-right: 5px;
+}
+
+.navTitle {
+	color: var(--secondary-font-color);
+	font-size: 30px;
+	font-weight: bold;
+}
