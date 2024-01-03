@@ -65,6 +65,15 @@ function App() {
 		setTodos(addTodos);
 		setValue('');
 	};
+
+  const getTotalCounts = () => {
+    const totalCounts = todos.reduce((total, num) => {
+      return total + num.count
+    }, 0)
+
+    return totalCounts;
+  }
+
 	// Cara Kesatu
 	// function handleClickPlus() {
 	//   setCount(count + 1);
@@ -129,14 +138,14 @@ function App() {
 
         <div className='info'>
           <div className='info-total'>
-            <p>Total list</p>
+            <p>{`Total list : ${todos.length}`}</p>
           </div>
           
           <div className='info-total'>
-            <p>Total Count</p>
+            <p>{`Total Count ${getTotalCounts()}`}</p>
           </div>
 
-          <button className='delete-all-button'>
+          <button className='delete-all-button' onClick={() => setTodos([])}>
             Delete All List
           </button>
         </div>
