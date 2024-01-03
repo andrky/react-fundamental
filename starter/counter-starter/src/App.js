@@ -5,7 +5,8 @@ import classname from 'classnames';
 // Import Component
 import Navbar from './components/Navbar';
 import Container from './components/Container';
-import SearchInput from './components/SearchInput'
+import SearchInput from './components/SearchInput';
+import Info from './components/Info';
 
 // Import Asset
 import minusIcon from './assets/minus-icon.svg';
@@ -132,19 +133,11 @@ function App() {
 					value={value}
 				/>
 
-				<div className="info">
-					<div className="info-total">
-						<p>{`Total list : ${todos.length}`}</p>
-					</div>
-
-					<div className="info-total">
-						<p>{`Total Count ${getTotalCounts()}`}</p>
-					</div>
-
-					<button className="delete-all-button" onClick={() => setTodos([])}>
-						Delete All List
-					</button>
-				</div>
+				<Info 
+          todosLength={todos.length} 
+          totalCounts={getTotalCounts()} 
+          onDelete={() => setTodos([])} 
+        />
 
 				{todos.length > 0 ? (
 					<div className="todos">
