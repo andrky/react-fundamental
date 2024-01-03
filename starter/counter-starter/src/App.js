@@ -2,8 +2,11 @@
 import { useState } from 'react';
 import classname from 'classnames';
 
+// Import Component
+import Navbar from './components/Navbar';
+import Container from './components/Container';
+
 // Import Asset
-import shoppingIcon from './assets/shopping-icon.svg';
 import minusIcon from './assets/minus-icon.svg';
 import plusIcon from './assets/plus-icon.svg';
 
@@ -66,6 +69,7 @@ function App() {
 		setValue('');
 	};
 
+  // Menghitung Total
   const getTotalCounts = () => {
     const totalCounts = todos.reduce((total, num) => {
       return total + num.count
@@ -116,11 +120,9 @@ function App() {
 			{/* Cara Ketiga */}
 			{/* <MyButton /> */}
 
-			<nav className="nav">
-				<img className="nav-icon" src={shoppingIcon} alt="Shopping Icon" />
-				<h1 className="nav-title">Shopping List</h1>
-			</nav>
-			<section className="container">
+      <Navbar />
+			
+			<Container>
 				<form className="form" onSubmit={handleAddTodos}>
 					<input
 						className="input"
@@ -182,7 +184,7 @@ function App() {
 				) : (
 					<div className="kosong">Empty</div>
 				)}
-			</section>
+			</Container>
 		</>
 	);
 }
