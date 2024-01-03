@@ -5,6 +5,7 @@ import classname from 'classnames';
 // Import Component
 import Navbar from './components/Navbar';
 import Container from './components/Container';
+import SearchInput from './components/SearchInput'
 
 // Import Asset
 import minusIcon from './assets/minus-icon.svg';
@@ -120,37 +121,30 @@ function App() {
 			{/* Cara Ketiga */}
 			{/* <MyButton /> */}
 
-      <Navbar />
-			
+			<Navbar />
+
 			<Container>
-				<form className="form" onSubmit={handleAddTodos}>
-					<input
-						className="input"
-						onChange={(e) => {
-							setValue(e.target.value);
-						}}
-						value={value}
-						type="text"
-						placeholder="List"
-					></input>
-					<button className="add-button" type="submit">
-						Add
+				<SearchInput
+					onSubmit={handleAddTodos}
+					onChange={(e) => {
+						setValue(e.target.value);
+					}}
+					value={value}
+				/>
+
+				<div className="info">
+					<div className="info-total">
+						<p>{`Total list : ${todos.length}`}</p>
+					</div>
+
+					<div className="info-total">
+						<p>{`Total Count ${getTotalCounts()}`}</p>
+					</div>
+
+					<button className="delete-all-button" onClick={() => setTodos([])}>
+						Delete All List
 					</button>
-				</form>
-
-        <div className='info'>
-          <div className='info-total'>
-            <p>{`Total list : ${todos.length}`}</p>
-          </div>
-          
-          <div className='info-total'>
-            <p>{`Total Count ${getTotalCounts()}`}</p>
-          </div>
-
-          <button className='delete-all-button' onClick={() => setTodos([])}>
-            Delete All List
-          </button>
-        </div>
+				</div>
 
 				{todos.length > 0 ? (
 					<div className="todos">
