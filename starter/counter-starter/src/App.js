@@ -7,10 +7,7 @@ import Navbar from './components/Navbar';
 import Container from './components/Container';
 import SearchInput from './components/SearchInput';
 import Info from './components/Info';
-
-// Import Asset
-import minusIcon from './assets/minus-icon.svg';
-import plusIcon from './assets/plus-icon.svg';
+import Todos from './components/Todos';
 
 import './App.css';
 
@@ -37,28 +34,28 @@ function App() {
 	const handleSubstractionCount = (index) => {
 		const newTodos = [...todos];
 
-    // Jika Count Data Todos > 1, Maka Bisa dilakukan Pengurangan Count
+		// Jika Count Data Todos > 1, Maka Bisa dilakukan Pengurangan Count
 		if (newTodos[index].count > 1) {
 			newTodos[index].count = newTodos[index].count - 1;
 		} else {
-      // Jika Data Count 1, Dan Mencoba Melakukan Pengurangan Maka Data Todos Akan Dihapus
+			// Jika Data Count 1, Dan Mencoba Melakukan Pengurangan Maka Data Todos Akan Dihapus
 			newTodos.splice(index, 1);
 		}
 
 		setTodos(newTodos);
 	};
 
-  // Menambahkan Submit Todos
+	// Menambahkan Submit Todos
 	const handleAddTodos = (e) => {
 		e.preventDefault();
 
-    // Jika Data Yang Diinput Kosong Maka Tidak Akan Bisa
+		// Jika Data Yang Diinput Kosong Maka Tidak Akan Bisa
 		if (!value) {
 			alert('No blank data!');
 			return;
 		}
 
-    // Melakukan Merge Array
+		// Melakukan Merge Array
 		const addTodos = [
 			...todos,
 			{
@@ -71,14 +68,14 @@ function App() {
 		setValue('');
 	};
 
-  // Menghitung Total
-  const getTotalCounts = () => {
-    const totalCounts = todos.reduce((total, num) => {
-      return total + num.count
-    }, 0)
+	// Menghitung Total
+	const getTotalCounts = () => {
+		const totalCounts = todos.reduce((total, num) => {
+			return total + num.count;
+		}, 0);
 
-    return totalCounts;
-  }
+		return totalCounts;
+	};
 
 	// Cara Kesatu
 	// function handleClickPlus() {
@@ -133,41 +130,14 @@ function App() {
 					value={value}
 				/>
 
-				<Info 
-          todosLength={todos.length} 
-          totalCounts={getTotalCounts()} 
-          onDelete={() => setTodos([])} 
-        />
+				<Info todosLength={todos.length} totalCounts={getTotalCounts()} onDelete={() => setTodos([])} />
 
 				{todos.length > 0 ? (
-					<div className="todos">
-						{todos.map((todo, index, arr) => {
-							return (
-								<div key={index} className={`todo ${!(arr.length === index + 1) && 'todo-divider'}`}>
-									{todo.title}
-									<div className="todo-icon-wrapper">
-										<div className="todo-count">{todo.count}</div>
-										<button
-											onClick={() => {
-												handleSubstractionCount(index);
-											}}
-											className="todo-action-button"
-										>
-											<img src={minusIcon} alt="Minus Icon" />
-										</button>
-										<button
-											onClick={() => {
-												handleAdditionCount(index);
-											}}
-											className="todo-action-button"
-										>
-											<img src={plusIcon} alt="Plus Icon" />
-										</button>
-									</div>
-								</div>
-							);
-						})}
-					</div>
+					<Todos 
+            todos={todos}
+            onSubstractionCount={(index) => handleSubstractionCount(index)}
+            onAdditionCount={(index) => handleAdditionCount(index)}
+          />
 				) : (
 					<div className="kosong">Empty</div>
 				)}
