@@ -1,6 +1,5 @@
 // Import library
 import { useState } from 'react';
-import classname from 'classnames';
 
 // Import Component
 import Navbar from './components/Navbar';
@@ -8,8 +7,7 @@ import Container from './components/Container';
 import SearchInput from './components/SearchInput';
 import Info from './components/Info';
 import Todos from './components/Todos';
-
-import './App.css';
+import Empty from './components/Empty';
 
 function App() {
 	// State Input Value
@@ -139,7 +137,7 @@ function App() {
             onAdditionCount={(index) => handleAdditionCount(index)}
           />
 				) : (
-					<div className="kosong">Empty</div>
+					<Empty />
 				)}
 			</Container>
 		</>
