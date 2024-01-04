@@ -6,10 +6,10 @@ import styles from './Todos.module.css';
 
 import PropTypes from 'prop-types';
 
-const Todos = (props) => {
+const Todos = ({ todos, onSubstractionCount, onAdditionCount }) => {
 	return (
 		<div className={styles.todos}>
-			{props.todos.map((todo, index, arr) => {
+			{todos.map((todo, index, arr) => {
 				return (
 					<div
 						key={index}
@@ -23,7 +23,7 @@ const Todos = (props) => {
 							<div className={styles.todoCount}>{todo.count}</div>
 							<button
 								onClick={() => {
-									props.onSubstractionCount(index);
+									onSubstractionCount(index);
 								}}
 								className={styles.todoActionButton}
 							>
@@ -31,7 +31,7 @@ const Todos = (props) => {
 							</button>
 							<button
 								onClick={() => {
-									props.onAdditionCount(index);
+									onAdditionCount(index);
 								}}
 								className={styles.todoActionButton}
 							>
