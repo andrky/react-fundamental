@@ -1,17 +1,32 @@
-import {useState, useEffect} from 'react';
-import axios from 'axios';
+import {useState, useEffect} from 'react'
+import axios from 'axios'
 
 function App() {
   const [emojisData, SetEmojisData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function fetchEmojis() {
-      const res = await axios.get('https://run.mocky.io/v3/5a982f64-218d-45d7-a380-ebe924d55631')
+      setLoading(true)
+      try {
+        const res = await axios.get('https://run.mocky.io/v3/5a982f64-218d-45d7-a380-ebe924d5563')
+        
+        SetEmojisData(res.data);
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
 
-      console.log(res)
+        setError(true)
+        setLoading(false)
+      }
     }
     fetchEmojis()
   }, [])
+
+  console.log('loading ? ', loading)
+  console.log('error ? ', error)
+  console.log('emojisData ? ', emojisData)
 
   return (
     <div>
