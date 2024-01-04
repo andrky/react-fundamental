@@ -10,7 +10,7 @@ function App() {
     async function fetchEmojis() {
       setLoading(true)
       try {
-        const res = await axios.get('https://run.mocky.io/v3/5a982f64-218d-45d7-a380-ebe924d5563')
+        const res = await axios.get('https://run.mocky.io/v3/5a982f64-218d-45d7-a380-ebe924d55631')
         
         SetEmojisData(res.data);
         setLoading(false)
@@ -24,13 +24,13 @@ function App() {
     fetchEmojis()
   }, [])
 
-  console.log('loading ? ', loading)
-  console.log('error ? ', error)
-  console.log('emojisData ? ', emojisData)
-
   return (
     <div>
       <h1>Hello, world!</h1>
+
+      {loading && <p>Loading...</p>}
+      {error && <p>Not Found...</p>}
+      {emojisData.length > 0 && <p>Success get Emoji's!</p>}
     </div>
   );
 }
