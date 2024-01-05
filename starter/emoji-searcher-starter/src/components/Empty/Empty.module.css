@@ -1,0 +1,11 @@
+.kosong {
+  padding: 15px 25px;
+  background-color: var(--main-background-color);
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+}
